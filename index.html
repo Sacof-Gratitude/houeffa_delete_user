@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demande de suppression de compte</title>
+    <title>Politique de confidentialité</title>
     <style>
         * {
             margin: 0;
@@ -13,42 +13,45 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
         }
 
         .container {
+            max-width: 900px;
+            margin: 0 auto;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            max-width: 600px;
-            width: 100%;
-            animation: slideUp 0.6s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            min-height: 100vh;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
         }
 
         .header {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             padding: 40px 30px;
             text-align: center;
+            position: relative;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         .header h1 {
@@ -62,140 +65,84 @@
             opacity: 0.9;
         }
 
-        .form-container {
-            padding: 40px 30px;
+        .content {
+            padding: 50px 40px;
         }
 
-        .info-box {
-            background: #f8f9fa;
-            border-left: 4px solid #007bff;
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f0f2ff;
+        }
+
+        .section h3 {
+            color: #555;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
             padding: 20px;
-            margin-bottom: 30px;
+            margin: 25px 0;
             border-radius: 8px;
         }
 
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #555;
-        }
-
-        .required {
-            color: #e74c3c;
-        }
-
-        input[type="email"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: #f8f9fa;
-        }
-
-        input[type="email"]:focus,
-        textarea:focus,
-        select:focus {
-            outline: none;
-            border-color: #667eea;
-            background: white;
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        input[type="checkbox"] {
-            margin-top: 4px;
-            transform: scale(1.2);
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border: 1px solid #c3e6cb;
-        }
-
-        .error-message {
-            display: none;
-            background: #f8d7da;
-            color: #721c24;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border: 1px solid #f5c6cb;
+        .contact-info {
+            background: linear-gradient(135deg, #f8f9ff, #e8ecff);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            text-align: center;
         }
 
         .footer {
             background: #f8f9fa;
-            padding: 20px 30px;
+            padding: 30px;
             text-align: center;
             color: #6c757d;
-            font-size: 14px;
+            border-top: 1px solid #dee2e6;
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .form-container {
-                padding: 30px 20px;
+            .content {
+                padding: 30px 25px;
             }
             
             .header {
                 padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .back-link {
+                left: 20px;
+                padding: 8px 16px;
+                font-size: 14px;
             }
         }
     </style>
@@ -203,148 +150,142 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🗑️ Suppression de compte</h1>
-            <p>Demande officielle de fermeture de compte</p>
+            <a href="index.html" class="back-link">← Retour</a>
+            <h1>🔒 Politique de confidentialité</h1>
+            <p>Protection et gestion de vos données personnelles</p>
         </div>
 
-        <div class="form-container">
-            <div class="info-box">
-                <strong>⚠️ Information importante :</strong> La suppression de votre compte est définitive et irréversible. Toutes vos données seront supprimées de nos serveurs.
+        <div class="content">
+            <div class="highlight-box">
+                <strong>Dernière mise à jour :</strong> [Date à définir]<br>
+                <strong>Entrée en vigueur :</strong> [Date à définir]
             </div>
 
-            <form id="deletionForm">
-                <div class="form-group">
-                    <label for="email">Adresse e-mail du compte <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" required placeholder="votre.email@exemple.com">
-                </div>
+            <div class="section">
+                <h2>1. Introduction</h2>
+                <p>Nous attachons une grande importance à la protection de votre vie privée et de vos données personnelles. Cette politique de confidentialité explique comment nous collectons, utilisons, protégeons et gérons vos informations personnelles.</p>
+                <p>En utilisant notre service, vous acceptez les pratiques décrites dans cette politique.</p>
+            </div>
 
-                <div class="form-group">
-                    <label for="reason">Raison de la suppression <span class="required">*</span></label>
-                    <select id="reason" name="reason" required>
-                        <option value="">Sélectionnez une raison</option>
-                        <option value="no_longer_need">Je n'ai plus besoin du service</option>
-                        <option value="privacy_concerns">Préoccupations concernant la confidentialité</option>
-                        <option value="found_alternative">J'ai trouvé une alternative</option>
-                        <option value="technical_issues">Problèmes techniques</option>
-                        <option value="other">Autre</option>
-                    </select>
-                </div>
+            <div class="section">
+                <h2>2. Données collectées</h2>
+                <h3>2.1 Informations que vous nous fournissez</h3>
+                <ul>
+                    <li>Adresse e-mail lors de la demande de suppression de compte</li>
+                    <li>Raisons et informations complémentaires fournies dans le formulaire</li>
+                    <li>Toute correspondance que vous nous envoyez</li>
+                </ul>
 
-                <div class="form-group">
-                    <label for="additional_info">Informations complémentaires (optionnel)</label>
-                    <textarea id="additional_info" name="additional_info" placeholder="Ajoutez des détails si nécessaire..."></textarea>
-                </div>
+                <h3>2.2 Informations collectées automatiquement</h3>
+                <ul>
+                    <li>Adresse IP et informations de géolocalisation générale</li>
+                    <li>Type de navigateur et système d'exploitation</li>
+                    <li>Horodatage des demandes</li>
+                    <li>Pages visitées sur notre site</li>
+                </ul>
+            </div>
 
-                <div class="checkbox-group">
-                    <input type="checkbox" id="confirm" name="confirm" required>
-                    <label for="confirm">Je confirme que je souhaite supprimer définitivement mon compte et que je comprends que cette action est irréversible. <span class="required">*</span></label>
-                </div>
+            <div class="section">
+                <h2>3. Utilisation des données</h2>
+                <p>Nous utilisons vos données personnelles pour :</p>
+                <ul>
+                    <li>Traiter vos demandes de suppression de compte</li>
+                    <li>Vous contacter concernant votre demande</li>
+                    <li>Améliorer notre service et notre site web</li>
+                    <li>Respecter nos obligations légales</li>
+                    <li>Prévenir la fraude et garantir la sécurité</li>
+                </ul>
+            </div>
 
-                <button type="submit" class="submit-btn">
-                    Envoyer la demande de suppression
-                </button>
+            <div class="section">
+                <h2>4. Partage des données</h2>
+                <p>Nous ne vendons, ne louons ni ne partageons vos données personnelles avec des tiers, sauf dans les cas suivants :</p>
+                <ul>
+                    <li>Avec votre consentement explicite</li>
+                    <li>Pour se conformer à une obligation légale</li>
+                    <li>Pour protéger nos droits, notre propriété ou notre sécurité</li>
+                    <li>Avec des prestataires de services qui nous aident à exploiter notre site (sous contrat de confidentialité)</li>
+                </ul>
+            </div>
 
-                <div class="success-message" id="successMessage">
-                    ✅ Votre demande de suppression de compte a été envoyée avec succès. Vous recevrez une confirmation par e-mail sous 24-48 heures.
-                </div>
+            <div class="section">
+                <h2>5. Conservation des données</h2>
+                <p>Nous conservons vos données personnelles uniquement le temps nécessaire aux fins pour lesquelles elles ont été collectées :</p>
+                <ul>
+                    <li>Les demandes de suppression sont conservées pendant la durée de traitement</li>
+                    <li>Les données de contact peuvent être conservées pour le suivi de votre demande</li>
+                    <li>Certaines données peuvent être conservées plus longtemps si requis par la loi</li>
+                </ul>
+            </div>
 
-                <div class="error-message" id="errorMessage">
-                    ❌ Une erreur s'est produite lors de l'envoi de votre demande. Veuillez réessayer ou nous contacter directement.
-                </div>
-            </form>
+            <div class="section">
+                <h2>6. Vos droits</h2>
+                <p>Conformément au RGPD et aux lois applicables, vous disposez des droits suivants :</p>
+                <ul>
+                    <li><strong>Droit d'accès :</strong> Demander une copie de vos données personnelles</li>
+                    <li><strong>Droit de rectification :</strong> Corriger des données inexactes</li>
+                    <li><strong>Droit à l'effacement :</strong> Demander la suppression de vos données</li>
+                    <li><strong>Droit à la portabilité :</strong> Recevoir vos données dans un format structuré</li>
+                    <li><strong>Droit d'opposition :</strong> Vous opposer au traitement de vos données</li>
+                    <li><strong>Droit de limitation :</strong> Demander la limitation du traitement</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>7. Sécurité des données</h2>
+                <p>Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos données personnelles :</p>
+                <ul>
+                    <li>Chiffrement des données en transit et au repos</li>
+                    <li>Accès restreint aux données personnelles</li>
+                    <li>Surveillance et détection des intrusions</li>
+                    <li>Sauvegardes sécurisées régulières</li>
+                    <li>Formation du personnel sur la protection des données</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>8. Cookies et technologies similaires</h2>
+                <p>Notre site utilise des technologies de suivi limitées :</p>
+                <ul>
+                    <li>Cookies essentiels pour le fonctionnement du site</li>
+                    <li>Aucun cookie de suivi publicitaire</li>
+                    <li>Stockage local temporaire pour améliorer l'expérience utilisateur</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>9. Transferts internationaux</h2>
+                <p>Si vos données sont transférées en dehors de l'Union européenne, nous nous assurons que :</p>
+                <ul>
+                    <li>Le pays bénéficie d'une décision d'adéquation de la Commission européenne</li>
+                    <li>Ou que des garanties appropriées sont mises en place (clauses contractuelles types)</li>
+                    <li>Ou que votre consentement explicite a été obtenu</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>10. Modifications de cette politique</h2>
+                <p>Nous pouvons modifier cette politique de confidentialité de temps à autre. Les modifications importantes vous seront notifiées par :</p>
+                <ul>
+                    <li>E-mail si nous avons votre adresse</li>
+                    <li>Notification sur notre site web</li>
+                    <li>Mise à jour de la date de "dernière modification"</li>
+                </ul>
+            </div>
+
+            <div class="contact-info">
+                <h2>📧 Nous contacter</h2>
+                <p>Pour toute question concernant cette politique de confidentialité ou pour exercer vos droits :</p>
+                <p><strong>E-mail :</strong> privacy@[votre-domaine].com</p>
+                <p><strong>Courrier :</strong> [Votre adresse]</p>
+                <p>Nous nous engageons à répondre dans les plus brefs délais.</p>
+            </div>
         </div>
 
         <div class="footer">
-            <p>Cette demande sera traitée dans un délai de 24-48 heures ouvrables.</p>
-            <p>Pour toute question, contactez notre support.</p>
+            <p>&copy; 2024 - Tous droits réservés</p>
+            <p>Cette politique de confidentialité est conforme au RGPD et aux lois applicables.</p>
         </div>
     </div>
-
-    <script>
-        document.getElementById('deletionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.querySelector('.submit-btn');
-            const successMsg = document.getElementById('successMessage');
-            const errorMsg = document.getElementById('errorMessage');
-            
-            // Reset messages
-            successMsg.style.display = 'none';
-            errorMsg.style.display = 'none';
-            
-            // Disable button and show loading
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Envoi en cours...';
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = {
-                email: formData.get('email'),
-                reason: formData.get('reason'),
-                additional_info: formData.get('additional_info'),
-                timestamp: new Date().toISOString(),
-                user_agent: navigator.userAgent,
-                ip_info: 'Client-side request'
-            };
-            
-            // Simulate form submission (replace with actual endpoint)
-            // For static deployment, you might want to use services like:
-            // - Formspree.io
-            // - Netlify Forms
-            // - EmailJS
-            // - A serverless function
-            
-            setTimeout(() => {
-                // Simulate success (replace with actual API call)
-                const isSuccess = Math.random() > 0.1; // 90% success rate for demo
-                
-                if (isSuccess) {
-                    successMsg.style.display = 'block';
-                    this.reset();
-                    
-                    // Optional: Send to actual endpoint
-                    // fetch('/api/delete-account', {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'Content-Type': 'application/json',
-                    //     },
-                    //     body: JSON.stringify(data)
-                    // });
-                    
-                    // For static sites, you could use EmailJS:
-                    /*
-                    emailjs.send('service_id', 'template_id', {
-                        to_email: 'admin@yoursite.com',
-                        from_email: data.email,
-                        reason: data.reason,
-                        additional_info: data.additional_info,
-                        timestamp: data.timestamp
-                    });
-                    */
-                    
-                } else {
-                    errorMsg.style.display = 'block';
-                }
-                
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Envoyer la demande de suppression';
-                
-            }, 1500);
-        });
-        
-        // Add some interactive feedback
-        const inputs = document.querySelectorAll('input, textarea, select');
-        inputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'scale(1.02)';
-                this.parentElement.style.transition = 'transform 0.2s ease';
-            });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.style.transform = 'scale(1)';
-            });
-        });
-    </script>
 </body>
 </html>
