@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande de suppression de compte</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 600px;
+            width: 100%;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .form-container {
+            padding: 40px 30px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        input[type="checkbox"] {
+            margin-top: 4px;
+            transform: scale(1.2);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #f5c6cb;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗑️ Suppression de compte</h1>
+            <p>Demande officielle de fermeture de compte</p>
+        </div>
+
+        <div class="form-container">
+            <div class="info-box">
+                <strong>⚠️ Information importante :</strong> La suppression de votre compte est définitive et irréversible. Toutes vos données seront supprimées de nos serveurs.
+            </div>
+
+            <form id="deletionForm">
+                <div class="form-group">
+                    <label for="email">Adresse e-mail du compte <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="votre.email@exemple.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="reason">Raison de la suppression <span class="required">*</span></label>
+                    <select id="reason" name="reason" required>
+                        <option value="">Sélectionnez une raison</option>
+                        <option value="no_longer_need">Je n'ai plus besoin du service</option>
+                        <option value="privacy_concerns">Préoccupations concernant la confidentialité</option>
+                        <option value="found_alternative">J'ai trouvé une alternative</option>
+                        <option value="technical_issues">Problèmes techniques</option>
+                        <option value="other">Autre</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="additional_info">Informations complémentaires (optionnel)</label>
+                    <textarea id="additional_info" name="additional_info" placeholder="Ajoutez des détails si nécessaire..."></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="confirm" name="confirm" required>
+                    <label for="confirm">Je confirme que je souhaite supprimer définitivement mon compte et que je comprends que cette action est irréversible. <span class="required">*</span></label>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Envoyer la demande de suppression
+                </button>
+
+                <div class="success-message" id="successMessage">
+                    ✅ Votre demande de suppression de compte a été envoyée avec succès. Vous recevrez une confirmation par e-mail sous 24-48 heures.
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    ❌ Une erreur s'est produite lors de l'envoi de votre demande. Veuillez réessayer ou nous contacter directement.
+                </div>
+            </form>
+        </div>
+
+        <div class="footer">
+            <p>Cette demande sera traitée dans un délai de 24-48 heures ouvrables.</p>
+            <p>Pour toute question, contactez notre support.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('deletionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            const successMsg = document.getElementById('successMessage');
+            const errorMsg = document.getElementById('errorMessage');
+            
+            // Reset messages
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours...';
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {
+                email: formData.get('email'),
+                reason: formData.get('reason'),
+                additional_info: formData.get('additional_info'),
+                timestamp: new Date().toISOString(),
+                user_agent: navigator.userAgent,
+                ip_info: 'Client-side request'
+            };
+            
+            // Simulate form submission (replace with actual endpoint)
+            // For static deployment, you might want to use services like:
+            // - Formspree.io
+            // - Netlify Forms
+            // - EmailJS
+            // - A serverless function
+            
+            setTimeout(() => {
+                // Simulate success (replace with actual API call)
+                const isSuccess = Math.random() > 0.1; // 90% success rate for demo
+                
+                if (isSuccess) {
+                    successMsg.style.display = 'block';
+                    this.reset();
+                    
+                    // Optional: Send to actual endpoint
+                    // fetch('/api/delete-account', {
+                    //     method: 'POST',
+                    //     headers: {
+                    //         'Content-Type': 'application/json',
+                    //     },
+                    //     body: JSON.stringify(data)
+                    // });
+                    
+                    // For static sites, you could use EmailJS:
+                    /*
+                    emailjs.send('service_id', 'template_id', {
+                        to_email: 'admin@yoursite.com',
+                        from_email: data.email,
+                        reason: data.reason,
+                        additional_info: data.additional_info,
+                        timestamp: data.timestamp
+                    });
+                    */
+                    
+                } else {
+                    errorMsg.style.display = 'block';
+                }
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Envoyer la demande de suppression';
+                
+            }, 1500);
+        });
+        
+        // Add some interactive feedback
+        const inputs = document.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.2s ease';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
