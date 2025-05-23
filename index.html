@@ -27,31 +27,57 @@
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
         }
 
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .navbar .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .navbar .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .navbar .nav-link.active {
+            background: rgba(255, 255, 255, 0.25);
+            font-weight: 600;
+        }
+
         .header {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
+        }
+
+        .header-content {
             padding: 40px 30px;
             text-align: center;
-            position: relative;
-        }
-
-        .back-link {
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .back-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
         }
 
         .header h1 {
@@ -127,22 +153,33 @@
         }
 
         @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .navbar .nav-links {
+                gap: 10px;
+            }
+            
+            .navbar .nav-link {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+            
+            .navbar .logo {
+                font-size: 1.3rem;
+            }
+            
             .content {
                 padding: 30px 25px;
             }
             
-            .header {
+            .header-content {
                 padding: 30px 20px;
             }
             
-            .header h1 {
+            .header-content h1 {
                 font-size: 2rem;
-            }
-            
-            .back-link {
-                left: 20px;
-                padding: 8px 16px;
-                font-size: 14px;
             }
         }
     </style>
@@ -150,15 +187,23 @@
 <body>
     <div class="container">
         <div class="header">
-            <a href="index.html" class="back-link">← Retour</a>
-            <h1>🔒 Politique de confidentialité</h1>
-            <p>Protection et gestion de vos données personnelles</p>
+            <nav class="navbar">
+                <a href="index.html" class="logo">🗑️ Houeffa</a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Suppression de compte</a>
+                    <a href="privacy.html" class="nav-link active">Confidentialité</a>
+                </div>
+            </nav>
+            <div class="header-content">
+                <h1>🔒 Politique de confidentialité</h1>
+                <p>Protection et gestion de vos données personnelles</p>
+            </div>
         </div>
 
         <div class="content">
             <div class="highlight-box">
-                <strong>Dernière mise à jour :</strong> [Date à définir]<br>
-                <strong>Entrée en vigueur :</strong> [Date à définir]
+                <strong>Dernière mise à jour :</strong> 24/05/2025<br>
+                <strong>Entrée en vigueur :</strong> 24/05/2025
             </div>
 
             <div class="section">
